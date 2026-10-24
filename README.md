@@ -2,6 +2,8 @@
 
 A data-quality-first analysis of ~102k New York City Airbnb listings. The headline result is a negative one, and the notebook treats it as a finding rather than something to tune away: **price in this dataset looks synthetic and cannot be predicted from the listing features.**
 
+**Included:** `compressed_data.csv` (102,599 rows, 26 columns), 16 exported figures, and the corrected notebook. This is separate from my [NYC Airbnb 2024 EDA project](https://github.com/Talhax55z/Air-BNB-1).
+
 **Notebook:** [`Airbnb_NYC_EDA_and_Modeling.ipynb`](Airbnb_NYC_EDA_and_Modeling.ipynb) (outputs are saved, so it renders on GitHub)
 
 ## Key findings
@@ -40,15 +42,34 @@ The notebook starts from a typical cleaning and EDA walkthrough and extends it. 
 ## Run it
 
 ```bash
-pip install -r requirements.txt
-jupyter lab
+git clone https://github.com/Talhax55z/airbnb-nyc-eda-modeling.git
+cd airbnb-nyc-eda-modeling
+python -m venv .venv
+# Activate .venv before installing dependencies.
+python -m pip install -r requirements.txt
+jupyter lab Airbnb_NYC_EDA_and_Modeling.ipynb
 ```
 
-1. Download **Airbnb Open Data** from [Kaggle](https://www.kaggle.com/datasets/arianazmoudeh/airbnbopendata) (derived from [Inside Airbnb](http://insideairbnb.com/explore/)).
-2. Put the CSV next to the notebook as `Airbnb_Open_Data.csv` or `compressed_data.csv` (a `data/` folder also works).
-3. Run all cells. The random-forest cross-validation takes a few minutes.
+1. Clone `https://github.com/Talhax55z/airbnb-nyc-eda-modeling.git` and open its directory.
+2. Install the dependencies in a virtual environment and open `Airbnb_NYC_EDA_and_Modeling.ipynb`. The supplied `compressed_data.csv` is already next to it.
+3. Restart the kernel and run all cells. Random-forest cross-validation and permutation importance can take several minutes. With `SAVE_FIGS = True`, the notebook writes charts to `figures/`.
 
-The CSV is not included in this repo.
+Dataset reference: [Airbnb Open Data on Kaggle](https://www.kaggle.com/datasets/arianazmoudeh/airbnbopendata). The loader also accepts `Airbnb_Open_Data.csv` or either filename inside `data/`.
+
+## Figures
+
+The supplied chart exports are included below. The review-date figure has been synchronized with the corrected notebook’s saved output. The notebook retains its later corrections to review-date cleaning and interpretation of model results; the older local notebook was not used to overwrite them. Re-running the notebook regenerates the charts from the included dataset.
+
+![Missing data](figures/01_missing_data.png)
+![Price distribution](figures/02_price_distribution.png)
+![Service fee and price](figures/03_service_fee_vs_price.png)
+![Listing geography](figures/06_listing_map.png)
+![Review-date handling](figures/10_reviews_over_time_fix.png)
+![Model comparison](figures/14_model_comparison.png)
+![Predicted versus actual prices](figures/15_predicted_vs_actual.png)
+![Borough classification](figures/17_borough_confusion.png)
+
+[Browse all 16 figures](figures).
 
 ## Limitations
 

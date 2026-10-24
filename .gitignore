@@ -1,5 +1,8 @@
-# Raw data is large and comes from Kaggle; download it instead of committing it
+# Keep the supplied dataset; ignore other local CSV exports.
 *.csv
+!compressed_data.csv
 data/
 .ipynb_checkpoints/
 __pycache__/
+.venv/
+.env
