@@ -1,0 +1,5 @@
+# Raw data is large and comes from Kaggle; download it instead of committing it
+*.csv
+data/
+.ipynb_checkpoints/
+__pycache__/
